@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh-Air</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+---------------------------------------------------------------------------------------------------
+STYLE CSS
+---------------------------------------------------------------------------------------------
+<STYLE class="CC">
+        
+:root {/* Variables de colores */
+    --primary: #1a73e8;
+    --secondary: #34a853;
+    --accent: #fbbc05;
+    --dark: #202124;
+    --light: #f8f9fa;
+    --text: #5f6368;
+}
+
+/* Reset y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--light);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo h1 {
+    color: var(--primary);
+    font-size: 1.8rem;
+}
+
+.logo i {
+    color: var(--accent);
+    margin-right: 5px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--primary);
+}
+
+.btn-cotizacion {
+    background-color: var(--accent);
+    color: white !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 100px 0 50px;
+    background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    color: var(--dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: var(--text);
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0d62c9;
+}
+
+/* Sección Servicios */
+.servicios {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.servicios h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 50px;
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.servicio-card {
+    background-color: var(--light);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.servicio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.servicio-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.servicio-card h3 {
+    color: var(--dark);
+    margin-bottom: 15px;
+}
+
+/* Sección Sobre Nosotros */
+.nosotros {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
+}
+
+.nosotros h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 50px;
+}
+
+.nosotros-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nosotros-text {
+    flex: 1;
+}
+
+.nosotros-text h3 {
+    color: var(--primary);
+    margin: 20px 0 10px;
+}
+
+.nosotros-image {
+    flex: 1;
+    text-align: center;
+}
+
+.nosotros-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección Galería */
+.galeria {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.galeria h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 50px;
+}
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.galeria-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 250px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.galeria-item:hover img {
+    transform: scale(1.1);
+}
+
+.galeria-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.galeria-item:hover .galeria-overlay {
+    transform: translateY(0);
+}
+
+/* Sección Contacto */
+.contacto {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #e3f2fd 0%, #e8f5e9 100%);
+}
+
+.contacto h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 50px;
+}
+
+.contacto-content {
+    display: flex;
+    gap: 40px;
+}
+
+.contacto-info {
+    flex: 1;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contacto-info h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.contacto-info p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.contacto-info i {
+    margin-right: 10px;
+    color: var(--primary);
+    width: 20px;
+}
+
+.contacto-form {
+    flex: 1;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.contacto-form h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    margin-bottom: 20px;
+    color: var(--accent);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.social-icons a:hover {
+    background-color: var(--primary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav ul.active {
+        display: flex;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+    }
+    
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+    
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+    
+    .nosotros-content {
+        flex-direction: column;
+    }
+    
+    .contacto-content {
+        flex-direction: column;
+    }
+}
+ </STYLE>
+    
+    ---------------------------------------------------------------------------------------------------
+     ESTRUCTURA HTML
+    ------------------------------------------------------------------------------------------------
+    <!-- Header y Navegación -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-snowflake"></i> Fresh-Air</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#cotizacion" class="btn-cotizacion">Cotización</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Inicio -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>Expertos en Soluciones de Refrigeración</h1>
+            <p>haciendo que tu experiencia en el verano sea unica</p>
+            <a href="#contacto" class="btn">Solicitar Servicio</a>
+        </div>
+
+<div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+         alt="Sistema de refrigeración"
+         style="width: 550px; height: 400 ;">
+</div>
+
+
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="servicios">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="servicios-grid">
+                <div class="servicio-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Instalación</h3>
+                    <p>Instalación profesional de sistemas de refrigeración residenciales y comerciales.</p>
+                </div>
+                <div class="servicio-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Mantenimiento</h3>
+                    <p>Programas de mantenimiento preventivo para garantizar el funcionamiento óptimo.</p>
+                </div>
+                <div class="servicio-card">
+                    <i class="fas fa-wrench"></i>
+                    <h3>Reparación</h3>
+                    <p>Diagnóstico y reparación rápida de cualquier falla en sus equipos de refrigeración.</p>
+                </div>
+                <div class="servicio-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Venta</h3>
+                    <p>Venta de equipos de refrigeración de las mejores marcas del mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section id="nosotros" class="nosotros">
+        <div class="container">
+            <h2>Sobre Nosotros</h2>
+            <div class="nosotros-content">
+                <div class="nosotros-text">
+                    <h3>Nuestra Historia</h3>
+                    <p>Fresh-air ha sido líder en soluciones de refrigeración para hogares y empresas.
+                     Comenzamos como un pequeño taller familiar y hoy somos referentes en la industria.</p>
+                    
+                    <h3>Experiencia</h3>
+                    <p>durante 2 años y 6 meses, Hemos desarrollado un profundo conocimiento técnico
+                     y un compromiso inquebrantable con la satisfacción del cliente.</p>
+                    
+                    <h3>Nuestro Equipo</h3>
+                    <p>Contamos con técnicos certificados y en constante capacitación, 
+                    listos para resolver cualquier desafío de refrigeración que se presente.</p>
+                </div>
+                <div class="nosotros-image">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d4cb8c63c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Equipo de trabajo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Galería -->
+    <section id="galeria" class="galeria">
+        <div class="container">
+            <h2>Nuestros Trabajos</h2>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d4cb8c63c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Instalación comercial">
+                    <div class="galeria-overlay">
+                        <p>Instalación Comercial</p>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1581092581223-82d1e0d2c413?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Reparación industrial">
+                    <div class="galeria-overlay">
+                        <p>Reparación Industrial</p>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Mantenimiento preventivo">
+                    <div class="galeria-overlay">
+                        <p>Mantenimiento Preventivo</p>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="https://images.unsplash.com/photo-1581092580497-e0d4cb8c63c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sistema residencial">
+                    <div class="galeria-overlay">
+                        <p>Sistema Residencial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2>Contacto</h2>
+            <div class="contacto-content">
+                <div class="contacto-info">
+                    <h3>Información de Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> El ciruelillo, CENTRO EDUCATIVO POLITENICO VICENTE AQUILINO SANTOS, SFM, RD</p>
+                    <p><i class="fas fa-phone"></i> (829-528-1027)</p>
+                    <p><i class="fas fa-envelope"></i> genesysfriasnolasco73@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Lunes a Sábado: 8:00 AM - 5:00 PM</p>
+                </div>
+                <form class="contacto-form" id="formulario-contacto">
+                    <h3>Solicitar Servicio</h3>
+                    <div class="form-group">
+                        <input type="text" id="nombre" placeholder="Nombre" required>
+                        <input type="text" id="apellido" placeholder="Apellido" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="telefono" placeholder="Teléfono" required>
+                        <input type="text" id="direccion" placeholder="Dirección" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="tipo-servicio" required>
+                            <option value="" disabled selected>Tipo de Servicio</option>
+                            <option value="instalacion">Instalación</option>
+                            <option value="mantenimiento">Mantenimiento</option>
+                            <option value="reparacion">Reparación</option>
+                            <option value="venta">Venta</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="descripcion" placeholder="Descripción del problema (opcional)" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="dia">Día disponible para visita:</label>
+                        <select id="dia" required>
+                            <option value="" disabled selected>Seleccione un día</option>
+                            <option value="lunes">Lunes</option>
+                            <option value="martes">Martes</option>
+                            <option value="miercoles">Miércoles</option>
+                            <option value="jueves">Jueves</option>
+                            <option value="viernes">Viernes</option>
+                            <option value="sabado">Sábado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Hora disponible para visita:</label>
+                        <select id="hora" required>
+                            <option value="" disabled selected>Seleccione una hora</option>
+                            <option value="8:00">8:00 AM</option>
+                            <option value="9:00">9:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">1:00 PM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                            <option value="16:00">4:00 PM</option>
+                            <option value="17:00">5:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pago">Forma de pago preferida:</label>
+                        <select id="pago" required>
+                            <option value="" disabled selected>Seleccione forma de pago</option>
+                            <option value="efectivo">Efectivo</option>
+                            <option value="tarjeta">Tarjeta</option>
+                            <option value="transferencia">Transferencia</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-snowflake"></i> Fresh-Air</h3>
+                    <p>Expertos en soluciones de refrigeración desde. Tu confort es nuestra prioridad.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#nosotros">Sobre Nosotros</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Redes Sociales</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fresh-Air. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    ---------------------------------------------------------------------------------------------
+      JAVA SCRIPT
+    ---------------------------------------------------------------------------------------------
+
+    <script src="script.js">
+        // Menú móvil
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav ul');
+    
+    menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+    });
+    
+    // Cerrar menú al hacer clic en un enlace
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            nav.classList.remove('active');
+        });
+    });
+    
+    // Smooth scroll para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Manejo del formulario de contacto
+    const contactoForm = document.getElementById('formulario-contacto');
+    
+    contactoForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validación básica
+        const nombre = document.getElementById('nombre').value;
+        const apellido = document.getElementById('apellido').value;
+        const telefono = document.getElementById('telefono').value;
+        const direccion = document.getElementById('direccion').value;
+        const tipoServicio = document.getElementById('tipo-servicio').value;
+        const dia = document.getElementById('dia').value;
+        const hora = document.getElementById('hora').value;
+        const pago = document.getElementById('pago').value;
+        
+        if (!nombre || !apellido || !telefono || !direccion || !tipoServicio || !dia || !hora || !pago) {
+            alert('Por favor, complete todos los campos obligatorios.');
+            return;
+        }
+        
+        // Simulación de envío
+        alert('¡Gracias por su solicitud! Nos pondremos en contacto con usted pronto.');
+        contactoForm.reset();
+    });
+    
+    // Efecto de scroll para el header
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        }
+    });
+    
+    // Animación para elementos al hacer scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Aplicar animación a elementos
+    const animatedElements = document.querySelectorAll('.servicio-card, .nosotros-content, .galeria-item, .contacto-content');
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(el);
+    });
+});
+    </script>
+
+
+</body>
+</html>
